@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduWeb - Learn Programming for Free</title>
+<meta name="description" content="EduWeb is a free platform to learn HTML, CSS, and JavaScript. Start programming from zero with interactive lessons and quizzes.">
+<meta name="keywords" content="learn programming, HTML, CSS, JavaScript, free coding, web development, beginner">
+<meta name="author" content="EduWeb">
+<meta property="og:title" content="EduWeb - Learn Programming for Free">
+<meta property="og:description" content="Free platform to learn HTML, CSS, and JavaScript. Start coding today!">
+<meta property="og:url" content="https://abdebaghdadi89-commits.github.io/EduWeb/">
+<meta property="og:type" content="website">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abdebaghdadi89-commits.github.io/EduWeb/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "EduWeb",
+  "url": "https://abdebaghdadi89-commits.github.io/EduWeb/",
+  "description": "Free platform to learn HTML, CSS, and JavaScript from zero."
+}
+</script>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1f4037, #99f2c8);
+  padding: 20px;
+}
+
+.container {
+  background: white;
+  border-radius: 20px;
+  padding: 50px 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  animation: fadeIn 0.8s ease;
+}
+
+.container h1 {
+  text-align: center;
+  color: #1f4037;
+  margin-bottom: 5px;
+  font-size: 28px;
+}
+
+.container .sub {
+  text-align: center;
+  color: #888;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.form {
+  display: block;
+}
+
+.form.hidden {
+  display: none;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #333;
+  font-size: 14px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: .3s;
+  outline: none;
+}
+
+.input-group input:focus {
+  border-color: #1f4037;
+  box-shadow: 0 0 0 3px rgba(31,64,55,.15);
+}
+
+.input-group .error {
+  color: #e74c3c;
+  font-size: 13px;
+  margin-top: 5px;
+  display: none;
+}
+
+.btn {
+  width: 100%;
+  padding: 14px;
+  background: #1f4037;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .3s;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  background: #2a5a4a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(31,64,55,.3);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.extra {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 13px;
+  color: #888;
+}
+
+.extra a {
+  color: #1f4037;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.extra a:hover {
+  text-decoration: underline;
+}
+
+.success {
+  color: #27ae60;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+  display: none;
+}
+
+.error-msg {
+  color: #e74c3c;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🚀 EduWeb</h1>
+  <p class="sub">Learn programming for free</p>
+
+  <!-- Login Form -->
+  <div id="loginForm" class="form">
+    <div class="input-group">
+      <label>Username</label>
+      <input type="text" id="loginUsername" placeholder="Enter username">
+      <div class="error" id="loginUserError">Please enter your username</div>
+    </div>
+
+    <div class="input-group">
+      <label>Password</label>
+      <input type="password" id="loginPassword" placeholder="Enter password">
+      <div class="error" id="loginPassError">Please enter your password</div>
+    </div>
+
+    <button class="btn" onclick="handleLogin()">Sign In</button>
+
+    <div class="error-msg" id="loginError">Invalid username or password</div>
+
+    <div class="extra">
+      Don't have an account? <a onclick="showRegister()">Register here</a>
+    </div>
+  </div>
+
+  <!-- Register Form -->
+  <div id="registerForm" class="form hidden">
+    <div class="input-group">
+      <label>Username</label>
+      <input type="text" id="regUsername" placeholder="Choose a username">
+      <div class="error" id="regUserError">Please enter a username</div>
+    </div>
+
+    <div class="input-group">
+      <label>Email</label>
+      <input type="email" id="regEmail" placeholder="Enter your email">
+      <div class="error" id="regEmailError">Please enter your email</div>
+    </div>
+
+    <div class="input-group">
+      <label>Password</label>
+      <input type="password" id="regPassword" placeholder="Choose a password">
+      <div class="error" id="regPassError">Password must be at least 4 characters</div>
+    </div>
+
+    <button class="btn" onclick="handleRegister()">Create Account</button>
+
+    <div class="error-msg" id="regError">This username already exists</div>
+    <div class="success" id="regSuccess">Account created! You can now login.</div>
+
+    <div class="extra">
+      Already have an account? <a onclick="showLogin()">Login here</a>
+    </div>
+  </div>
+</div>
+
+<script>
+function getUsers() {
+  const data = JSON.parse(localStorage.getItem("eduweb_users") || "{}");
+  if (!data["admin"]) {
+    data["admin"] = "2012";
+    localStorage.setItem("eduweb_users", JSON.stringify(data));
+  }
+  return data;
+}
+
+function saveUsers(users) {
+  localStorage.setItem("eduweb_users", JSON.stringify(users));
+}
+
+function showRegister() {
+  document.getElementById("loginForm").classList.add("hidden");
+  document.getElementById("registerForm").classList.remove("hidden");
+  clearErrors();
+}
+
+function showLogin() {
+  document.getElementById("registerForm").classList.add("hidden");
+  document.getElementById("loginForm").classList.remove("hidden");
+  clearErrors();
+}
+
+function clearErrors() {
+  document.querySelectorAll(".error, .error-msg, .success").forEach(el => el.style.display = "none");
+}
+
+function handleLogin() {
+  const username = document.getElementById("loginUsername").value.trim();
+  const password = document.getElementById("loginPassword").value;
+  const users = getUsers();
+
+  clearErrors();
+
+  if (!username) { document.getElementById("loginUserError").style.display = "block"; return; }
+  if (!password) { document.getElementById("loginPassError").style.display = "block"; return; }
+
+  if (users[username] && users[username] === password) {
+    localStorage.setItem("loggedIn", "true");
+    localStorage.setItem("user", username);
+    window.location.href = "dashboard.html";
+  } else {
+    document.getElementById("loginError").style.display = "block";
+  }
+}
+
+function handleRegister() {
+  const username = document.getElementById("regUsername").value.trim();
+  const email = document.getElementById("regEmail").value.trim();
+  const password = document.getElementById("regPassword").value;
+  const users = getUsers();
+
+  clearErrors();
+
+  if (!username) { document.getElementById("regUserError").style.display = "block"; return; }
+  if (!email) { document.getElementById("regEmailError").style.display = "block"; return; }
+  if (password.length < 4) { document.getElementById("regPassError").style.display = "block"; return; }
+
+  if (users[username]) {
+    document.getElementById("regError").style.display = "block";
+    return;
+  }
+
+  users[username] = password;
+  saveUsers(users);
+
+  document.getElementById("regSuccess").style.display = "block";
+  document.getElementById("regUsername").value = "";
+  document.getElementById("regEmail").value = "";
+  document.getElementById("regPassword").value = "";
+}
+</script>
+
+</body>
+</html>
